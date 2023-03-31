@@ -1,0 +1,42 @@
+<%= form_for postit , url: game_postits_path(game), html: { id: "new_postit", class: 'card w-75 p-4 ' } do |f| %>
+    
+    <%= f.hidden_field :game_id, value: game.id %>
+
+    <% if postit.errors.any? %>
+         <div id="error_explanation">
+            <h2><%= pluralize(postit.errors.count, "error") %> prohibited this postit from being saved:</h2>
+
+            <ul>
+                <% postit.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="mb-3">
+        <label class="form-label">Titre</label>
+        <%= f.text_field :name , class: 'form-control', placeholder: "..." %>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Choisir une couleur</label>
+        <%= f.select :color, Postit::COLOR, { prompt: '...', id: 'id' }, class: "form-select" %>
+    </div>
+
+    <% if game.game_steps.count > 0 %>
+        <div class="mb-3">
+            <label class="form-label">Choisir une option</label>
+            <%= f.select :game_step_id, game.game_steps.order(name: :asc).collect{ |step| [ step.name , step.id] }, { prompt: '...' }, class: "form-select" %>
+        </div>
+    <% end %>
+
+     <div class="mb-3">
+        <label class="form-label">description</label>
+        <%= f.text_area :description , class: 'form-control', placeholder: "...", rows: 5 %>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+<% end %>

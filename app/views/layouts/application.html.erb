@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Debrief</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <!-- Toast messages -->
+      <div class="container position-relative">
+        <div class="position-fixed bottom-0 start-0 p-3" id="toasts_messages" style="z-index: 11">
+        </div>
+      </div>
+    <!-- Toast messages -->
+
+    
+  </body>
+</html>

@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: games
+#
+#  id          :bigint           not null, primary key
+#  title       :string
+#  slug        :string
+#  description :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  title: MyString
+  slug: MyString
+  description: MyString
+
+two:
+  title: MyString
+  slug: MyString
+  description: MyString

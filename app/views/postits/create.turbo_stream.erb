@@ -1,0 +1,7 @@
+<%= turbo_stream.append "toasts_messages", partial: "shared/toast_messages", locals: { title: "New todo", message: "New postit ajouté avec succès.", toast_text_type_class: "text-success" }  %>
+
+<%= turbo_stream.replace "new_postit", partial: "postits/form", locals: { postit: Postit.new, game: @game } %>
+
+<%= turbo_stream.prepend "game_#{ @game.id }" do %>
+    <%= render "postits/postit", postit: @postit %>
+<% end %>
